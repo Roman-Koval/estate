@@ -7,7 +7,7 @@
   <meta name="description" content="Элитная недвижимость на Северном Кипре — квартиры у моря, инвестиции, вид на жительство" />
   <title>Kiparos Estate — Северный Кипр</title>
   <link rel="manifest" href="manifest.json" />
-  <link rel="apple-touch-icon" href="icon-192.png" />
+  <link rel="apple-touch-icon" id="apple-icon" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -1304,10 +1304,45 @@ window.addEventListener('resize', fixInvestGrid);
 fixInvestGrid();
 </script>
 
-<!-- PWA -->
+<!-- PWA: generate apple-touch-icon via canvas, register static sw.js -->
 <script>
-if('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js').catch(()=>{});
+(function() {
+  function makeIcon(size) {
+    const c = document.createElement('canvas');
+    c.width = c.height = size;
+    const ctx = c.getContext('2d');
+    const bg = ctx.createLinearGradient(0, 0, size, size);
+    bg.addColorStop(0, '#0a1628');
+    bg.addColorStop(1, '#1d3461');
+    ctx.fillStyle = bg;
+    ctx.beginPath();
+    ctx.roundRect(0, 0, size, size, size * 0.2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(size * 0.72, size * 0.28, size * 0.18, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(201,168,76,0.15)';
+    ctx.fill();
+    const fs = size * 0.44;
+    ctx.font = `300 ${fs}px Georgia, serif`;
+    ctx.fillStyle = '#c9a84c';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('K', size * 0.48, size * 0.52);
+    ctx.beginPath();
+    ctx.arc(size * 0.72, size * 0.52, size * 0.045, 0, Math.PI * 2);
+    ctx.fillStyle = '#c9a84c';
+    ctx.fill();
+    return c.toDataURL('image/png');
+  }
+  document.getElementById('apple-icon').href = makeIcon(192);
+})();
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('sw.js')
+      .then(function(reg) { console.log('SW registered', reg.scope); })
+      .catch(function(err) { console.warn('SW registration failed:', err); });
+  });
 }
 </script>
 
