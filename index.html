@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a1628" />
+  <meta name="description" content="Элитная недвижимость на Северном Кипре — квартиры у моря, инвестиции, вид на жительство" />
+  <title>Kiparos Estate — Северный Кипр</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="icon-192.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #0a1628;
+      --navy-mid: #112240;
+      --navy-light: #1d3461;
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --gold-dim: rgba(201,168,76,0.15);
+      --sea: #4ab8d4;
+      --sea-dim: rgba(74,184,212,0.12);
+      --cream: #f5f0e8;
+      --cream-dim: rgba(245,240,232,0.06);
+      --white: #ffffff;
+      --text-muted: rgba(245,240,232,0.5);
+      --card-bg: rgba(17,34,64,0.85);
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--navy);
+      color: var(--cream);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── BACKGROUND ── */
+    .bg-mesh {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% -10%, rgba(74,184,212,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 85% 110%, rgba(201,168,76,0.07) 0%, transparent 55%),
+        radial-gradient(ellipse 100% 50% at 50% 50%, rgba(17,34,64,0.4) 0%, transparent 100%);
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 0 24px;
+      height: 68px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(10,22,40,0.75);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(201,168,76,0.12);
+      transition: all 0.3s;
+    }
+
+    .logo {
+      display: flex; align-items: baseline; gap: 6px;
+      text-decoration: none;
+    }
+    .logo-word {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px; font-weight: 400; letter-spacing: 0.08em;
+      color: var(--cream);
+    }
+    .logo-dot { color: var(--gold); font-size: 26px; }
+    .logo-sub {
+      font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--gold); font-weight: 500; opacity: 0.85;
+    }
+
+    nav { display: flex; align-items: center; gap: 8px; }
+    .nav-btn {
+      background: none; border: none; cursor: pointer;
+      color: var(--cream); font-family: 'Outfit', sans-serif;
+      font-size: 13px; letter-spacing: 0.05em;
+      padding: 8px 14px; border-radius: 8px;
+      transition: all 0.2s; opacity: 0.75;
+    }
+    .nav-btn:hover { opacity: 1; background: var(--cream-dim); }
+    .nav-btn.active { opacity: 1; color: var(--gold); }
+
+    .nav-cta {
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: var(--navy) !important;
+      font-weight: 600; opacity: 1 !important;
+      padding: 8px 18px; border-radius: 8px;
+      border: none; cursor: pointer;
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px; letter-spacing: 0.05em;
+      transition: all 0.25s;
+      box-shadow: 0 4px 14px rgba(201,168,76,0.25);
+    }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(201,168,76,0.35); }
+
+    .burger {
+      display: none; flex-direction: column; gap: 5px; cursor: pointer;
+      padding: 8px; background: none; border: none;
+    }
+    .burger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--cream); border-radius: 2px; transition: all 0.3s;
+    }
+
+    /* ── MAIN ── */
+    main { position: relative; z-index: 1; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100svh;
+      display: flex; flex-direction: column;
+      justify-content: flex-end; align-items: flex-start;
+      padding: 100px 32px 64px;
+      position: relative; overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(10,22,40,0.3) 0%, rgba(10,22,40,0.7) 60%, var(--navy) 100%),
+        url("https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=80") center/cover no-repeat;
+      animation: heroZoom 20s ease-in-out infinite alternate;
+    }
+    @keyframes heroZoom {
+      from { transform: scale(1); }
+      to { transform: scale(1.05); }
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gold-dim); border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 100px; padding: 6px 14px;
+      font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 24px;
+      animation: fadeUp 0.8s ease both;
+    }
+    .hero-badge::before { content: '●'; font-size: 8px; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(42px, 7vw, 88px);
+      font-weight: 300; line-height: 1.05;
+      letter-spacing: -0.01em;
+      max-width: 760px;
+      animation: fadeUp 0.8s 0.15s ease both;
+    }
+    h1 em { font-style: italic; color: var(--gold); }
+
+    .hero-sub {
+      margin-top: 20px; max-width: 500px;
+      font-size: 16px; line-height: 1.65;
+      color: var(--text-muted); font-weight: 300;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+
+    .hero-actions {
+      display: flex; align-items: center; gap: 16px;
+      margin-top: 36px; flex-wrap: wrap;
+      animation: fadeUp 0.8s 0.45s ease both;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: var(--navy); font-weight: 600;
+      padding: 14px 28px; border-radius: 10px;
+      border: none; cursor: pointer;
+      font-family: 'Outfit', sans-serif; font-size: 14px; letter-spacing: 0.04em;
+      transition: all 0.25s;
+      box-shadow: 0 6px 24px rgba(201,168,76,0.3);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(201,168,76,0.4); }
+
+    .btn-ghost {
+      background: rgba(255,255,255,0.07); color: var(--cream);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 14px 28px; border-radius: 10px; cursor: pointer;
+      font-family: 'Outfit', sans-serif; font-size: 14px;
+      transition: all 0.25s; display: flex; align-items: center; gap: 8px;
+      backdrop-filter: blur(8px);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.25); }
+
+    .hero-stats {
+      position: absolute; bottom: 64px; right: 32px;
+      display: flex; gap: 32px;
+      animation: fadeUp 0.8s 0.6s ease both;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px; font-weight: 400; color: var(--gold);
+      line-height: 1;
+    }
+    .stat-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); margin-top: 4px; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── SEARCH BAR ── */
+    #search-section {
+      padding: 0 32px 64px;
+      position: relative; z-index: 1;
+    }
+
+    .search-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(24px);
+      border: 1px solid rgba(201,168,76,0.18);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.4);
+    }
+
+    .search-tabs {
+      display: flex; gap: 4px; margin-bottom: 24px;
+      background: rgba(255,255,255,0.04); border-radius: 10px; padding: 4px;
+      width: fit-content;
+    }
+    .search-tab {
+      padding: 7px 18px; border-radius: 8px;
+      background: none; border: none; cursor: pointer;
+      font-family: 'Outfit', sans-serif; font-size: 13px;
+      color: var(--text-muted); transition: all 0.2s;
+    }
+    .search-tab.active {
+      background: var(--gold); color: var(--navy); font-weight: 600;
+    }
+
+    .search-grid {
+      display: grid; grid-template-columns: 1fr 1fr 1fr 1fr auto;
+      gap: 12px; align-items: end;
+    }
+
+    .search-field { display: flex; flex-direction: column; gap: 6px; }
+    .search-field label {
+      font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--gold); font-weight: 500;
+    }
+    .search-field select,
+    .search-field input {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-sm); color: var(--cream);
+      font-family: 'Outfit', sans-serif; font-size: 14px;
+      padding: 11px 14px; outline: none; transition: all 0.2s;
+      appearance: none;
+    }
+    .search-field select:focus,
+    .search-field input:focus {
+      border-color: rgba(201,168,76,0.45);
+      background: rgba(255,255,255,0.09);
+    }
+    .search-field select option { background: var(--navy-mid); }
+
+    .btn-search {
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: var(--navy); font-weight: 600;
+      border: none; border-radius: var(--radius-sm); cursor: pointer;
+      font-family: 'Outfit', sans-serif; font-size: 14px;
+      padding: 12px 24px; white-space: nowrap;
+      transition: all 0.25s;
+      display: flex; align-items: center; gap: 8px;
+      box-shadow: 0 4px 16px rgba(201,168,76,0.25);
+    }
+    .btn-search:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(201,168,76,0.35); }
+
+    /* ── SECTIONS ── */
+    section { padding: 80px 32px; }
+    .section-label {
+      font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 12px; font-weight: 500;
+    }
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(32px, 4.5vw, 54px);
+      font-weight: 300; line-height: 1.1;
+    }
+    h2 em { font-style: italic; color: var(--gold); }
+    .section-header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 40px; flex-wrap: wrap; gap: 16px;
+    }
+    .view-all {
+      font-size: 13px; color: var(--gold); text-decoration: none;
+      display: flex; align-items: center; gap: 6px; opacity: 0.8;
+      transition: opacity 0.2s; cursor: pointer; background: none; border: none;
+      font-family: 'Outfit', sans-serif;
+    }
+    .view-all:hover { opacity: 1; }
+
+    /* ── PROPERTY CARDS ── */
+    .properties-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .property-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius);
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+      position: relative;
+    }
+    .property-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(201,168,76,0.3);
+      box-shadow: 0 24px 56px rgba(0,0,0,0.45), 0 0 0 1px rgba(201,168,76,0.1);
+    }
+    .property-card.featured {
+      grid-column: span 2;
+    }
+
+    .card-img {
+      position: relative; overflow: hidden;
+      height: 230px;
+    }
+    .property-card.featured .card-img { height: 320px; }
+    .card-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .property-card:hover .card-img img { transform: scale(1.06); }
+
+    .card-badge {
+      position: absolute; top: 14px; left: 14px;
+      background: var(--gold); color: var(--navy);
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 5px 10px; border-radius: 6px;
+    }
+    .card-badge.new { background: var(--sea); color: var(--navy); }
+    .card-badge.reduced { background: #e85d5d; color: #fff; }
+
+    .card-fav {
+      position: absolute; top: 14px; right: 14px;
+      background: rgba(10,22,40,0.7); backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.15);
+      width: 36px; height: 36px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all 0.2s; font-size: 16px;
+    }
+    .card-fav:hover { background: rgba(201,168,76,0.2); border-color: var(--gold); }
+    .card-fav.active { background: rgba(232,93,93,0.2); border-color: #e85d5d; }
+
+    .card-body { padding: 20px 22px 22px; }
+    .card-location {
+      font-size: 12px; color: var(--sea); letter-spacing: 0.06em;
+      display: flex; align-items: center; gap: 5px; margin-bottom: 8px;
+    }
+    .card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px; font-weight: 400; line-height: 1.25;
+      margin-bottom: 12px; color: var(--cream);
+    }
+    .card-features {
+      display: flex; gap: 16px; margin-bottom: 16px;
+      font-size: 13px; color: var(--text-muted);
+    }
+    .card-features span { display: flex; align-items: center; gap: 5px; }
+    .card-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .card-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px; font-weight: 400; color: var(--gold);
+    }
+    .card-price-note { font-size: 12px; color: var(--text-muted); }
+    .card-action {
+      background: var(--gold-dim); border: 1px solid rgba(201,168,76,0.25);
+      color: var(--gold); padding: 8px 16px; border-radius: 8px;
+      font-size: 13px; font-weight: 500; cursor: pointer;
+      transition: all 0.2s; font-family: 'Outfit', sans-serif;
+    }
+    .card-action:hover { background: rgba(201,168,76,0.25); }
+
+    /* ── LOCATIONS ── */
+    .locations-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .location-card {
+      position: relative; border-radius: var(--radius); overflow: hidden;
+      height: 260px; cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: all 0.3s;
+    }
+    .location-card:hover { transform: translateY(-4px); border-color: rgba(201,168,76,0.25); }
+    .location-card img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .location-card:hover img { transform: scale(1.08); }
+    .location-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(10,22,40,0.92) 0%, rgba(10,22,40,0.3) 60%, transparent 100%);
+    }
+    .location-body {
+      position: absolute; bottom: 0; left: 0; right: 0; padding: 20px;
+    }
+    .location-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px; font-weight: 400; color: var(--cream); margin-bottom: 4px;
+    }
+    .location-count { font-size: 12px; color: var(--sea); }
+
+    /* ── WHY US ── */
+    #why {
+      background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy) 100%);
+      border-top: 1px solid rgba(201,168,76,0.1);
+      border-bottom: 1px solid rgba(201,168,76,0.1);
+    }
+    .why-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 24px; margin-top: 48px;
+    }
+    .why-card {
+      padding: 28px 24px;
+      background: var(--cream-dim);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius);
+      transition: all 0.3s;
+    }
+    .why-card:hover { border-color: rgba(201,168,76,0.25); transform: translateY(-3px); }
+    .why-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: var(--gold-dim); border: 1px solid rgba(201,168,76,0.25);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; margin-bottom: 16px;
+    }
+    .why-title { font-size: 16px; font-weight: 500; margin-bottom: 8px; }
+    .why-text { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+
+    /* ── CTA BAND ── */
+    #cta {
+      background: linear-gradient(135deg, var(--navy-light) 0%, var(--navy-mid) 100%);
+      border-radius: var(--radius); margin: 0 32px 80px;
+      padding: 64px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 32px; flex-wrap: wrap;
+      border: 1px solid rgba(201,168,76,0.2);
+      position: relative; overflow: hidden;
+    }
+    #cta::before {
+      content: '';
+      position: absolute; top: -60px; right: -60px;
+      width: 280px; height: 280px;
+      background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .cta-text h2 { font-size: clamp(28px,3.5vw,42px); }
+    .cta-text p { margin-top: 10px; color: var(--text-muted); max-width: 440px; line-height: 1.6; }
+    .cta-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(5,12,24,0.88); backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px; opacity: 0; pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+    .modal {
+      background: var(--navy-mid);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: var(--radius);
+      width: 100%; max-width: 540px;
+      padding: 40px; position: relative;
+      transform: scale(0.96) translateY(16px);
+      transition: all 0.3s;
+      max-height: 90vh; overflow-y: auto;
+    }
+    .modal-overlay.open .modal { transform: scale(1) translateY(0); }
+    .modal-close {
+      position: absolute; top: 16px; right: 16px;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+      color: var(--cream); width: 36px; height: 36px; border-radius: 50%;
+      cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s;
+    }
+    .modal-close:hover { background: rgba(255,255,255,0.12); }
+    .modal h3 {
+      font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 400;
+      margin-bottom: 6px;
+    }
+    .modal p { color: var(--text-muted); font-size: 14px; margin-bottom: 28px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label {
+      display: block; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 6px; font-weight: 500;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%; background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-sm);
+      color: var(--cream); font-family: 'Outfit', sans-serif; font-size: 14px;
+      padding: 11px 14px; outline: none; transition: all 0.2s; resize: vertical;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: rgba(201,168,76,0.45); }
+    .form-group select option { background: var(--navy-mid); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .form-submit {
+      width: 100%; margin-top: 8px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: var(--navy); font-weight: 700;
+      border: none; border-radius: var(--radius-sm); cursor: pointer;
+      font-family: 'Outfit', sans-serif; font-size: 15px;
+      padding: 14px; transition: all 0.25s;
+      box-shadow: 0 4px 16px rgba(201,168,76,0.3);
+    }
+    .form-submit:hover { box-shadow: 0 6px 24px rgba(201,168,76,0.4); }
+
+    /* ── MOBILE NAV ── */
+    .mobile-nav {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10,22,40,0.92); backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(201,168,76,0.12);
+      display: none; justify-content: space-around; align-items: center;
+      padding: 12px 0 max(12px, env(safe-area-inset-bottom));
+    }
+    .mob-nav-btn {
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+      background: none; border: none; cursor: pointer; color: var(--text-muted);
+      font-family: 'Outfit', sans-serif; font-size: 10px; letter-spacing: 0.05em;
+      padding: 4px 16px; transition: all 0.2s;
+    }
+    .mob-nav-btn .icon { font-size: 20px; }
+    .mob-nav-btn.active { color: var(--gold); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 48px 32px 32px;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px;
+    }
+    .footer-brand p { color: var(--text-muted); font-size: 14px; line-height: 1.6; margin-top: 14px; max-width: 280px; }
+    .footer-col h4 { font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+    .footer-col a {
+      display: block; color: var(--text-muted); font-size: 14px;
+      text-decoration: none; margin-bottom: 10px; transition: color 0.2s; cursor: pointer;
+    }
+    .footer-col a:hover { color: var(--cream); }
+    .footer-bottom {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06);
+      flex-wrap: wrap; gap: 12px;
+    }
+    .footer-bottom p { font-size: 13px; color: var(--text-muted); }
+
+    /* ── TOAST ── */
+    .toast {
+      position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%) translateY(20px);
+      background: rgba(17,34,64,0.95); border: 1px solid rgba(201,168,76,0.3);
+      color: var(--cream); padding: 12px 24px; border-radius: 100px;
+      font-size: 14px; z-index: 300; opacity: 0; pointer-events: none;
+      transition: all 0.3s; white-space: nowrap;
+      backdrop-filter: blur(16px);
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* ── SKELETON LOADER ── */
+    .skeleton {
+      background: linear-gradient(90deg, rgba(255,255,255,0.04) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.04) 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+      border-radius: 8px;
+    }
+    @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+
+    /* ── SCROLL ANIMATION ── */
+    .reveal {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .search-grid { grid-template-columns: 1fr 1fr; }
+      .btn-search { grid-column: span 2; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .property-card.featured { grid-column: span 1; }
+      .hero-stats { position: static; flex-direction: row; justify-content: center; margin-top: 32px; }
+      #hero { padding-bottom: 32px; flex-direction: column; justify-content: flex-end; }
+      #cta { margin: 0 16px 80px; padding: 40px 28px; }
+    }
+
+    @media (max-width: 640px) {
+      header { padding: 0 16px; }
+      nav .nav-btn, nav .nav-cta { display: none; }
+      .burger { display: flex; }
+      .mobile-nav { display: flex; }
+      section { padding: 60px 16px; }
+      #search-section { padding: 0 16px 60px; }
+      .search-card { padding: 20px 16px; }
+      .search-grid { grid-template-columns: 1fr; }
+      .btn-search { grid-column: span 1; }
+      .hero-stats { gap: 20px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      body { padding-bottom: 70px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- BG -->
+<div class="bg-mesh"></div>
+
+<!-- HEADER -->
+<header id="header">
+  <a class="logo" onclick="showSection('home')">
+    <span class="logo-word">Kiparos</span>
+    <span class="logo-dot">·</span>
+    <span class="logo-sub">Estate</span>
+  </a>
+  <nav>
+    <button class="nav-btn active" onclick="showSection('home')">Главная</button>
+    <button class="nav-btn" onclick="showSection('catalog')">Каталог</button>
+    <button class="nav-btn" onclick="showSection('regions')">Районы</button>
+    <button class="nav-btn" onclick="showSection('invest')">Инвестиции</button>
+    <button class="nav-cta" onclick="openModal('contact')">Консультация</button>
+  </nav>
+  <button class="burger" id="burger" onclick="toggleMobileMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- MAIN -->
+<main id="app">
+
+  <!-- HOME PAGE -->
+  <div id="page-home">
+
+    <!-- HERO -->
+    <section id="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-badge">Северный Кипр — Инвестиции & Жизнь</div>
+      <h1>Ваша <em>мечта</em><br>у Средиземного моря</h1>
+      <p class="hero-sub">Эксклюзивная недвижимость: квартиры, виллы и апартаменты на берегу моря с возможностью получения ВНЖ.</p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="showSection('catalog')">Смотреть объекты</button>
+        <button class="btn-ghost" onclick="openModal('contact')">▶ Бесплатная консультация</button>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-num">420+</div><div class="stat-label">Объектов</div></div>
+        <div class="stat"><div class="stat-num">12</div><div class="stat-label">Районов</div></div>
+        <div class="stat"><div class="stat-num">98%</div><div class="stat-label">Довольных клиентов</div></div>
+      </div>
+    </section>
+
+    <!-- SEARCH -->
+    <div id="search-section">
+      <div class="search-card">
+        <div class="search-tabs">
+          <button class="search-tab active" onclick="setTab(this,'buy')">Купить</button>
+          <button class="search-tab" onclick="setTab(this,'rent')">Аренда</button>
+          <button class="search-tab" onclick="setTab(this,'invest')">Инвестиции</button>
+        </div>
+        <div class="search-grid">
+          <div class="search-field">
+            <label>Район</label>
+            <select id="s-region">
+              <option value="">Все районы</option>
+              <option>Кирения (Гирне)</option>
+              <option>Фамагуста (Газимагуса)</option>
+              <option>Искеле</option>
+              <option>Лефкоша (Никосия)</option>
+              <option>Гюзельюрт</option>
+            </select>
+          </div>
+          <div class="search-field">
+            <label>Тип жилья</label>
+            <select id="s-type">
+              <option value="">Любой тип</option>
+              <option>Апартаменты</option>
+              <option>Вилла</option>
+              <option>Пентхаус</option>
+              <option>Студия</option>
+              <option>Таунхаус</option>
+            </select>
+          </div>
+          <div class="search-field">
+            <label>Бюджет (£)</label>
+            <select id="s-budget">
+              <option value="">Любой бюджет</option>
+              <option>до £60,000</option>
+              <option>£60,000 – £120,000</option>
+              <option>£120,000 – £250,000</option>
+              <option>£250,000 – £500,000</option>
+              <option>от £500,000</option>
+            </select>
+          </div>
+          <div class="search-field">
+            <label>Комнат</label>
+            <select id="s-rooms">
+              <option value="">Любое кол-во</option>
+              <option>Студия</option>
+              <option>1+1</option>
+              <option>2+1</option>
+              <option>3+1</option>
+              <option>4+1 и более</option>
+            </select>
+          </div>
+          <button class="btn-search" onclick="doSearch()">
+            <span>🔍</span> Найти
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- FEATURED LISTINGS -->
+    <section id="featured" class="reveal">
+      <div class="section-header">
+        <div>
+          <div class="section-label">Горячие предложения</div>
+          <h2>Лучшие <em>объекты</em></h2>
+        </div>
+        <button class="view-all" onclick="showSection('catalog')">Все объекты →</button>
+      </div>
+      <div class="properties-grid" id="featured-grid"></div>
+    </section>
+
+    <!-- REGIONS -->
+    <section id="regions-preview" class="reveal">
+      <div class="section-header">
+        <div>
+          <div class="section-label">Популярные локации</div>
+          <h2>Лучшие <em>районы</em></h2>
+        </div>
+        <button class="view-all" onclick="showSection('regions')">Все районы →</button>
+      </div>
+      <div class="locations-grid" id="locations-grid"></div>
+    </section>
+
+    <!-- WHY US -->
+    <section id="why" class="reveal">
+      <div style="text-align:center; margin-bottom:48px;">
+        <div class="section-label">Почему мы</div>
+        <h2>Ваш надёжный <em>партнёр</em><br>на Северном Кипре</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon">⚖️</div>
+          <div class="why-title">Юридическая чистота</div>
+          <div class="why-text">Полное юридическое сопровождение сделки от договора до получения титула собственника.</div>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">🏠</div>
+          <div class="why-title">ВНЖ при покупке</div>
+          <div class="why-text">Помогаем получить вид на жительство при покупке недвижимости от £70,000.</div>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">📈</div>
+          <div class="why-title">Рост цен 15–25% в год</div>
+          <div class="why-text">Северный Кипр — один из самых быстрорастущих рынков недвижимости в Европе.</div>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">🌊</div>
+          <div class="why-title">Аренда до 10% годовых</div>
+          <div class="why-text">Управление арендой и гарантированный доход — полный пассивный доход для инвестора.</div>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">✈️</div>
+          <div class="why-title">Туры на просмотр</div>
+          <div class="why-text">Организуем ознакомительные туры: встреча, трансфер, показ объектов, переговоры.</div>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">💬</div>
+          <div class="why-title">Поддержка на русском</div>
+          <div class="why-text">Наша команда говорит на русском, украинском, турецком и английском языках.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <div id="cta" class="reveal">
+      <div class="cta-text">
+        <div class="section-label">Готовы начать?</div>
+        <h2>Получите <em>бесплатную</em><br>консультацию</h2>
+        <p>Расскажем про все актуальные объекты, условия рассрочки и помощь с получением ВНЖ.</p>
+      </div>
+      <div class="cta-actions">
+        <button class="btn-primary" onclick="openModal('contact')">Записаться на консультацию</button>
+        <button class="btn-ghost" onclick="openModal('tour')">🛫 Организовать тур</button>
+      </div>
+    </div>
+
+  </div><!-- /page-home -->
+
+  <!-- CATALOG PAGE -->
+  <div id="page-catalog" style="display:none; padding-top:88px;">
+    <section>
+      <div class="section-label">Недвижимость</div>
+      <div class="section-header">
+        <h2>Каталог <em>объектов</em></h2>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <select style="background:var(--card-bg);border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:var(--cream);padding:8px 12px;font-family:'Outfit',sans-serif;font-size:13px;outline:none;" onchange="filterCatalog(this)">
+            <option value="all">Все типы</option>
+            <option value="apartment">Апартаменты</option>
+            <option value="villa">Вилла</option>
+            <option value="penthouse">Пентхаус</option>
+            <option value="studio">Студия</option>
+          </select>
+          <select style="background:var(--card-bg);border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:var(--cream);padding:8px 12px;font-family:'Outfit',sans-serif;font-size:13px;outline:none;" onchange="sortCatalog(this)">
+            <option value="default">Сортировка</option>
+            <option value="price-asc">Цена ↑</option>
+            <option value="price-desc">Цена ↓</option>
+            <option value="new">Новые</option>
+          </select>
+        </div>
+      </div>
+      <div class="properties-grid" id="catalog-grid"></div>
+      <div style="text-align:center;margin-top:48px;">
+        <button class="btn-ghost" onclick="loadMore()">Загрузить ещё</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- REGIONS PAGE -->
+  <div id="page-regions" style="display:none; padding-top:88px;">
+    <section>
+      <div class="section-label">Где жить</div>
+      <h2>Районы <em>Северного Кипра</em></h2>
+      <p style="color:var(--text-muted);margin-top:12px;margin-bottom:48px;max-width:560px;line-height:1.65;">Каждый район Северного Кипра уникален. Выберите тот, что подойдёт именно вам — от курортного побережья до тихих горных деревень.</p>
+      <div id="regions-detail-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px;"></div>
+    </section>
+  </div>
+
+  <!-- INVEST PAGE -->
+  <div id="page-invest" style="display:none; padding-top:88px;">
+    <section>
+      <div class="section-label">Инвестиции</div>
+      <h2>Вложите деньги <em>выгодно</em></h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:48px;align-items:start;" class="invest-grid">
+        <div>
+          <div class="why-card" style="margin-bottom:16px;">
+            <div class="why-icon">📊</div>
+            <div class="why-title">ROI до 25% в год</div>
+            <div class="why-text">Объединение прироста стоимости и арендного дохода даёт одну из лучших доходностей в регионе.</div>
+          </div>
+          <div class="why-card" style="margin-bottom:16px;">
+            <div class="why-icon">🏗️</div>
+            <div class="why-title">Рассрочка от застройщика</div>
+            <div class="why-text">Первый взнос от 30%. Рассрочка до 5 лет без процентов напрямую от застройщика.</div>
+          </div>
+          <div class="why-card">
+            <div class="why-icon">🌍</div>
+            <div class="why-title">Мультивалютные сделки</div>
+            <div class="why-text">Принимаем £, €, $, крипту. Возможно оформление через иностранную компанию.</div>
+          </div>
+        </div>
+        <div>
+          <div class="search-card">
+            <div class="section-label" style="margin-bottom:16px;">Калькулятор доходности</div>
+            <div class="form-group">
+              <label>Бюджет (£)</label>
+              <input type="number" id="calc-budget" placeholder="150000" oninput="calcROI()" />
+            </div>
+            <div class="form-group">
+              <label>Тип объекта</label>
+              <select id="calc-type" onchange="calcROI()">
+                <option value="8">Апартаменты (8% аренда)</option>
+                <option value="10">Пентхаус (10% аренда)</option>
+                <option value="7">Вилла (7% аренда)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Рост цены в год (%)</label>
+              <input type="number" id="calc-growth" value="18" oninput="calcROI()" />
+            </div>
+            <div id="calc-result" style="background:var(--gold-dim);border:1px solid rgba(201,168,76,0.25);border-radius:10px;padding:20px;margin-top:8px;display:none;">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                <div>
+                  <div style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">Аренда / год</div>
+                  <div id="r-rent" style="font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--cream)"></div>
+                </div>
+                <div>
+                  <div style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">Рост за год</div>
+                  <div id="r-growth" style="font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--cream)"></div>
+                </div>
+                <div>
+                  <div style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">Итого / год</div>
+                  <div id="r-total" style="font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--gold)"></div>
+                </div>
+                <div>
+                  <div style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">Стоимость через 5 лет</div>
+                  <div id="r-5y" style="font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--gold)"></div>
+                </div>
+              </div>
+            </div>
+            <button class="btn-primary" style="width:100%;margin-top:16px;" onclick="openModal('invest')">Обсудить с агентом</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+</main>
+
+<!-- MOBILE NAV -->
+<nav class="mobile-nav">
+  <button class="mob-nav-btn active" onclick="showSection('home',this)"><span class="icon">🏠</span>Главная</button>
+  <button class="mob-nav-btn" onclick="showSection('catalog',this)"><span class="icon">🔍</span>Каталог</button>
+  <button class="mob-nav-btn" onclick="showSection('regions',this)"><span class="icon">🗺️</span>Районы</button>
+  <button class="mob-nav-btn" onclick="showSection('invest',this)"><span class="icon">📈</span>Доход</button>
+  <button class="mob-nav-btn" onclick="openModal('contact')"><span class="icon">💬</span>Контакт</button>
+</nav>
+
+<!-- MODALS -->
+<div class="modal-overlay" id="modal-contact">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('contact')">×</button>
+    <h3>Бесплатная консультация</h3>
+    <p>Заполните форму — наш специалист свяжется с вами в течение 30 минут.</p>
+    <div class="form-row">
+      <div class="form-group"><label>Имя</label><input type="text" placeholder="Ваше имя" /></div>
+      <div class="form-group"><label>Телефон / WhatsApp</label><input type="tel" placeholder="+7 999 000 00 00" /></div>
+    </div>
+    <div class="form-group"><label>Интерес</label>
+      <select>
+        <option>Покупка квартиры</option>
+        <option>Инвестиции</option>
+        <option>Аренда</option>
+        <option>Получение ВНЖ</option>
+        <option>Другое</option>
+      </select>
+    </div>
+    <div class="form-group"><label>Бюджет (£)</label>
+      <select>
+        <option>до £60,000</option>
+        <option>£60,000 – £150,000</option>
+        <option>£150,000 – £300,000</option>
+        <option>от £300,000</option>
+      </select>
+    </div>
+    <div class="form-group"><label>Комментарий</label><textarea rows="3" placeholder="Опишите ваши пожелания..."></textarea></div>
+    <button class="form-submit" onclick="submitForm()">Отправить заявку</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-tour">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('tour')">×</button>
+    <h3>Организовать просмотровый тур</h3>
+    <p>Мы встретим вас в аэропорту, покажем объекты и поможем с выбором. Тур бесплатный.</p>
+    <div class="form-row">
+      <div class="form-group"><label>Имя</label><input type="text" placeholder="Ваше имя" /></div>
+      <div class="form-group"><label>Телефон</label><input type="tel" placeholder="+7 999 000 00 00" /></div>
+    </div>
+    <div class="form-group"><label>Желаемые даты</label><input type="text" placeholder="Например: 20–25 июня" /></div>
+    <div class="form-group"><label>Количество человек</label>
+      <select><option>1</option><option>2</option><option>3–4</option><option>5+</option></select>
+    </div>
+    <button class="form-submit" onclick="submitForm()">Записаться на тур</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-invest">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('invest')">×</button>
+    <h3>Инвестиционная консультация</h3>
+    <p>Обсудим стратегию, подберём объекты с наилучшим ROI и оформим сделку.</p>
+    <div class="form-row">
+      <div class="form-group"><label>Имя</label><input type="text" placeholder="Ваше имя" /></div>
+      <div class="form-group"><label>Телефон</label><input type="tel" placeholder="+7 999 000 00 00" /></div>
+    </div>
+    <div class="form-group"><label>Инвестиционный бюджет (£)</label><input type="text" placeholder="от £80,000" /></div>
+    <button class="form-submit" onclick="submitForm()">Получить план</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-property">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('property')">×</button>
+    <div id="modal-property-content"></div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo">
+        <span class="logo-word">Kiparos</span>
+        <span class="logo-dot">·</span>
+        <span class="logo-sub">Estate</span>
+      </div>
+      <p>Эксклюзивная недвижимость на Северном Кипре. Работаем с 2014 года. Более 1200 успешных сделок.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Объекты</h4>
+      <a onclick="showSection('catalog')">Апартаменты</a>
+      <a onclick="showSection('catalog')">Виллы</a>
+      <a onclick="showSection('catalog')">Пентхаусы</a>
+      <a onclick="showSection('catalog')">Студии</a>
+    </div>
+    <div class="footer-col">
+      <h4>Районы</h4>
+      <a onclick="showSection('regions')">Кирения</a>
+      <a onclick="showSection('regions')">Фамагуста</a>
+      <a onclick="showSection('regions')">Искеле</a>
+      <a onclick="showSection('regions')">Лефкоша</a>
+    </div>
+    <div class="footer-col">
+      <h4>Контакты</h4>
+      <a href="tel:+905338001234">+90 533 800 12 34</a>
+      <a href="mailto:info@kiparos.com">info@kiparos.com</a>
+      <a>WhatsApp: +90 533 800 12 34</a>
+      <a>Telegram: @kiparos_estate</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 Kiparos Estate. Все права защищены.</p>
+    <p style="color:var(--text-muted);">Лицензированный агент — Северный Кипр</p>
+  </div>
+</footer>
+
+<script>
+// ── DATA ──
+const properties = [
+  {
+    id:1, type:'apartment', badge:'Хит продаж', badgeClass:'',
+    img:'https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&q=75',
+    region:'Кирения (Гирне)', title:'Апартаменты с панорамным видом на море',
+    beds:2, baths:1, area:85, price:'£85,000', priceNum:85000,
+    desc:'Современные апартаменты 2+1 в 300м от моря. Комплекс с бассейном, фитнесом и консьерж-сервисом.', isNew:false, featured:true
+  },
+  {
+    id:2, type:'penthouse', badge:'Новинка', badgeClass:'new',
+    img:'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=75',
+    region:'Искеле', title:'Пентхаус с частным бассейном и терассой',
+    beds:3, baths:2, area:165, price:'£245,000', priceNum:245000,
+    desc:'Эксклюзивный пентхаус на последнем этаже с приватным плунжерным бассейном и 360° видом.', isNew:true, featured:false
+  },
+  {
+    id:3, type:'studio', badge:'Скидка -7%', badgeClass:'reduced',
+    img:'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=75',
+    region:'Фамагуста', title:'Студия в 50м от пляжа — готово к сдаче',
+    beds:0, baths:1, area:42, price:'£49,000', priceNum:49000,
+    desc:'Компактная студия с мебелью и техникой. Отличный вариант для аренды с доходом до 10% годовых.', isNew:false, featured:false
+  },
+  {
+    id:4, type:'villa', badge:'Премиум', badgeClass:'',
+    img:'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=75',
+    region:'Кирения (Гирне)', title:'Вилла с садом и видом на горы Бешпармак',
+    beds:4, baths:3, area:280, price:'£395,000', priceNum:395000,
+    desc:'Роскошная вилла с частным бассейном, ландшафтным садом и видом на горы. Тихий закрытый район.', isNew:false, featured:false
+  },
+  {
+    id:5, type:'apartment', badge:'Новинка', badgeClass:'new',
+    img:'https://images.unsplash.com/photo-1598928636135-d146006ff4be?w=800&q=75',
+    region:'Лефкоша', title:'Современные апартаменты в центре столицы',
+    beds:1, baths:1, area:62, price:'£68,000', priceNum:68000,
+    desc:'1+1 в новом жилом комплексе в центре Лефкоши. Паркинг, консьерж, управляемая аренда.', isNew:true, featured:false
+  },
+  {
+    id:6, type:'apartment', badge:'', badgeClass:'',
+    img:'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=75',
+    region:'Искеле', title:'2+1 в закрытом комплексе Long Beach',
+    beds:2, baths:2, area:95, price:'£120,000', priceNum:120000,
+    desc:'Апартаменты в самом популярном курортном районе. Прямо у Длинного пляжа, 5 бассейнов, спа.', isNew:false, featured:false
+  },
+];
+
+const regions = [
+  { name:'Кирения (Гирне)', count:142, desc:'Живописный портовый город у подножия гор Бешпармак. Исторический центр, яхт-клуб, лучшие рестораны.', img:'https://images.unsplash.com/photo-1533104816931-20fa691ff6ca?w=600&q=75' },
+  { name:'Искеле', count:98, desc:'Самый быстрорастущий курортный район. Long Beach, Bafra — центр новых девелоперских проектов.', img:'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=75' },
+  { name:'Фамагуста', count:67, desc:'Исторический город с венецианскими стенами. Доступные цены и большой потенциал роста.', img:'https://images.unsplash.com/photo-1519046904884-53103b34b206?w=600&q=75' },
+  { name:'Лефкоша', count:45, desc:'Столица острова. Деловой и административный центр, богатая культура, удобная логистика.', img:'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=75' },
+  { name:'Гюзельюрт', count:28, desc:'Тихий западный регион с апельсиновыми садами. Идеален для жизни, природы и уединения.', img:'https://images.unsplash.com/photo-1448375240586-882707db888b?w=600&q=75' },
+];
+
+// ── RENDER ──
+function renderCard(p, featured=false) {
+  const bedLabel = p.beds === 0 ? 'Студия' : `${p.beds} спальни`;
+  return `
+    <div class="property-card${featured?' featured':''}" onclick="openProperty(${p.id})">
+      <div class="card-img">
+        <img src="${p.img}" alt="${p.title}" loading="lazy" />
+        ${p.badge ? `<span class="card-badge ${p.badgeClass}">${p.badge}</span>` : ''}
+        <div class="card-fav" id="fav-${p.id}" onclick="toggleFav(event,${p.id})">🤍</div>
+      </div>
+      <div class="card-body">
+        <div class="card-location">📍 ${p.region}</div>
+        <div class="card-title">${p.title}</div>
+        <div class="card-features">
+          <span>🛏 ${bedLabel}</span>
+          <span>🚿 ${p.baths} санузел</span>
+          <span>📐 ${p.area} м²</span>
+        </div>
+        <div class="card-footer">
+          <div>
+            <div class="card-price">${p.price}</div>
+            <div class="card-price-note">или рассрочка от застройщика</div>
+          </div>
+          <button class="card-action">Подробнее</button>
+        </div>
+      </div>
+    </div>`;
+}
+
+function renderRegionCard(r) {
+  return `
+    <div class="location-card" onclick="showSection('regions')">
+      <img src="${r.img}" alt="${r.name}" loading="lazy" />
+      <div class="location-overlay"></div>
+      <div class="location-body">
+        <div class="location-name">${r.name}</div>
+        <div class="location-count">${r.count} объектов</div>
+      </div>
+    </div>`;
+}
+
+function renderRegionDetail(r) {
+  return `
+    <div class="property-card" style="overflow:visible;" onclick="void(0)">
+      <div class="card-img"><img src="${r.img}" alt="${r.name}" loading="lazy" /></div>
+      <div class="card-body">
+        <div class="card-title">${r.name}</div>
+        <div class="card-price-note" style="line-height:1.6;color:var(--text-muted);font-size:14px;margin-bottom:12px;">${r.desc}</div>
+        <div class="card-footer">
+          <div class="card-location" style="margin:0;">🏘 ${r.count} объектов</div>
+          <button class="card-action" onclick="showSection('catalog')">Смотреть →</button>
+        </div>
+      </div>
+    </div>`;
+}
+
+// ── INIT ──
+document.getElementById('featured-grid').innerHTML =
+  properties.slice(0,4).map((p,i) => renderCard(p, i===0)).join('');
+
+document.getElementById('locations-grid').innerHTML =
+  regions.slice(0,5).map(r => renderRegionCard(r)).join('');
+
+document.getElementById('catalog-grid').innerHTML =
+  properties.map(p => renderCard(p)).join('');
+
+document.getElementById('regions-detail-grid').innerHTML =
+  regions.map(r => renderRegionDetail(r)).join('');
+
+// ── NAVIGATION ──
+function showSection(name, btn) {
+  ['home','catalog','regions','invest'].forEach(s => {
+    document.getElementById('page-'+s).style.display = s===name ? '' : 'none';
+  });
+  // update header nav active
+  document.querySelectorAll('.nav-btn').forEach(b => {
+    b.classList.toggle('active', b.textContent.toLowerCase().includes(
+      name==='home'?'главн':name==='catalog'?'каталог':name==='regions'?'район':'инвест'
+    ));
+  });
+  // update mobile nav
+  if(btn) {
+    document.querySelectorAll('.mob-nav-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+  window.scrollTo(0,0);
+}
+
+// ── SEARCH ──
+function setTab(el, type) {
+  document.querySelectorAll('.search-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function doSearch() {
+  showSection('catalog');
+  showToast('🔍 Показаны результаты поиска');
+}
+
+// ── FILTERS ──
+let currentFilter = 'all';
+function filterCatalog(sel) {
+  currentFilter = sel.value;
+  const filtered = currentFilter==='all' ? properties : properties.filter(p=>p.type===currentFilter);
+  document.getElementById('catalog-grid').innerHTML = filtered.map(p=>renderCard(p)).join('');
+}
+
+function sortCatalog(sel) {
+  let arr = [...properties];
+  if(sel.value==='price-asc') arr.sort((a,b)=>a.priceNum-b.priceNum);
+  else if(sel.value==='price-desc') arr.sort((a,b)=>b.priceNum-a.priceNum);
+  else if(sel.value==='new') arr = arr.filter(p=>p.isNew).concat(arr.filter(p=>!p.isNew));
+  document.getElementById('catalog-grid').innerHTML = arr.map(p=>renderCard(p)).join('');
+}
+
+function loadMore() { showToast('✅ Все объекты загружены'); }
+
+// ── FAVORITES ──
+const favs = new Set();
+function toggleFav(e, id) {
+  e.stopPropagation();
+  const el = document.getElementById('fav-'+id);
+  if(favs.has(id)) { favs.delete(id); el.textContent='🤍'; el.classList.remove('active'); showToast('Удалено из избранного'); }
+  else { favs.add(id); el.textContent='❤️'; el.classList.add('active'); showToast('❤️ Добавлено в избранное'); }
+}
+
+// ── PROPERTY MODAL ──
+function openProperty(id) {
+  const p = properties.find(x=>x.id===id);
+  if(!p) return;
+  document.getElementById('modal-property-content').innerHTML = `
+    <img src="${p.img}" alt="${p.title}" style="width:100%;height:200px;object-fit:cover;border-radius:10px;margin-bottom:20px;" />
+    <div class="card-location" style="margin-bottom:8px;">📍 ${p.region}</div>
+    <h3 style="margin-bottom:8px;">${p.title}</h3>
+    <div class="card-features" style="margin-bottom:16px;">
+      <span>🛏 ${p.beds||'Студия'}</span>
+      <span>🚿 ${p.baths}</span>
+      <span>📐 ${p.area} м²</span>
+    </div>
+    <p style="color:var(--text-muted);font-size:14px;line-height:1.65;margin-bottom:20px;">${p.desc}</p>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:32px;color:var(--gold);margin-bottom:20px;">${p.price}</div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+      <button class="btn-primary" style="flex:1;" onclick="closeModal('property');openModal('contact')">Запросить информацию</button>
+      <button class="btn-ghost" style="flex:1;" onclick="closeModal('property');openModal('tour')">🛫 Тур на просмотр</button>
+    </div>`;
+  openModal('property');
+}
+
+// ── MODALS ──
+function openModal(name) {
+  document.getElementById('modal-'+name).classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(name) {
+  document.getElementById('modal-'+name).classList.remove('open');
+  document.body.style.overflow='';
+}
+document.querySelectorAll('.modal-overlay').forEach(m => {
+  m.addEventListener('click', e => { if(e.target===m) closeModal(m.id.replace('modal-','')); });
+});
+
+function submitForm() {
+  closeModal('contact'); closeModal('tour'); closeModal('invest');
+  showToast('✅ Заявка отправлена! Мы свяжемся с вами в течение 30 мин.');
+}
+
+// ── TOAST ──
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// ── CALC ──
+function calcROI() {
+  const budget = parseFloat(document.getElementById('calc-budget').value)||0;
+  const rentPct = parseFloat(document.getElementById('calc-type').value)||8;
+  const growth = parseFloat(document.getElementById('calc-growth').value)||18;
+  if(!budget) { document.getElementById('calc-result').style.display='none'; return; }
+  const rent = budget * rentPct / 100;
+  const growthVal = budget * growth / 100;
+  const total = rent + growthVal;
+  const val5y = budget * Math.pow(1+growth/100, 5);
+  const fmt = v => '£'+Math.round(v).toLocaleString('en-GB');
+  document.getElementById('r-rent').textContent = fmt(rent);
+  document.getElementById('r-growth').textContent = fmt(growthVal);
+  document.getElementById('r-total').textContent = fmt(total);
+  document.getElementById('r-5y').textContent = fmt(val5y);
+  document.getElementById('calc-result').style.display='block';
+}
+
+// ── SCROLL REVEAL ──
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ── MOBILE MENU (simple) ──
+function toggleMobileMenu() { showToast('Используйте нижнее меню для навигации'); }
+
+// ── INVEST responsive ──
+function fixInvestGrid() {
+  const g = document.querySelector('.invest-grid');
+  if(!g) return;
+  g.style.gridTemplateColumns = window.innerWidth < 700 ? '1fr' : '1fr 1fr';
+}
+window.addEventListener('resize', fixInvestGrid);
+fixInvestGrid();
+</script>
+
+<!-- PWA -->
+<script>
+if('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js').catch(()=>{});
+}
+</script>
+
+</body>
+</html>
